@@ -1,0 +1,67 @@
+version: '3.1'
+
+services:
+  mongors1:
+    container_name: mongors1
+    build:
+      context: .
+      dockerfile: ./docker-mongo/Dockerfile
+    restart: always
+    ports:
+      - "10001:27017"
+    expose:
+      - "27017"
+    volumes:
+      - '/mongoRs/mongoRs1:/data/db'
+    command: mongod --replSet replicaSet --bind_ip_all
+    networks:
+      - mongo-networks
+
+  mongors2:
+    container_name: mongors2
+    image: "mongo:5.0.0"
+    restart: always
+    ports:
+      - "10002:27017"
+    expose:
+      - "27017"
+    volumes:
+      - '/mongoRs/mongoRs2:/data/db'
+    command: mongod --replSet replicaSet --bind_ip_all
+    networks:
+      - mongo-networks
+    depends_on:
+      - mongors1
+
+  mongors3:
+    container_name: mongors3
+    image: "mongo:5.0.0"
+    restart: always
+    ports:
+      - "10003:27017"
+    expose:
+      - "27017"
+    volumes:
+      - '/mongoRs/mongoRs3:/data/db'
+    command: mongod --replSet replicaSet --bind_ip_all
+    networks:
+      - mongo-networks
+    depends_on:
+      - mongors2
+
+  node:
+    container_name: docker-node
+    #    restart: always
+    build:  # 이미지를 사용 할 것이 아니기 때문에 build 사용
+      context: .  # docker build를 실행 할 디렉토리  . 으로 했기 떄문에 현재 위치
+      dockerfile: ./Dockerfile  # 빌드에 사용 될 Dockerfile
+    ports:  # 외부 포트와 컨테이너 포트 연결
+      - "4889:5000"
+    networks:
+      - mongo-networks
+    depends_on:
+      - mongors3
+
+networks:
+  mongo-networks:
+    driver: bridge
