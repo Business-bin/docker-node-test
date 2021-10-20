@@ -19,7 +19,7 @@ services:
 
   mongors2:
     container_name: mongors2
-    image: "mongo:5.0.0"
+    image: "mongo"
     restart: always
     ports:
       - "10002:27017"
@@ -35,7 +35,7 @@ services:
 
   mongors3:
     container_name: mongors3
-    image: "mongo:5.0.0"
+    image: "mongo"
     restart: always
     ports:
       - "10003:27017"

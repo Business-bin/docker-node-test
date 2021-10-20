@@ -1,4 +1,4 @@
-FROM mongo:5.0.0
+FROM mongo
 
 WORKDIR /db
 RUN mkdir configs
