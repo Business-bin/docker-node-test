@@ -8,9 +8,10 @@ COPY package.json /app
 RUN npm cache clean --force
 # npm 설치
 RUN npm install
+RUN npm install pm2 -g
 # 남아있는 소스코드 복사
 COPY . .
 # 도커 실행시 실행될 명령어(서버 구동)
-CMD [ "npm", "run", "dev" ]
+CMD [ "npm", "run", "server" ]
 # 5000포트 오픈
 EXPOSE 5000

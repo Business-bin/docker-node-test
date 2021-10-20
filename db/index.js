@@ -15,6 +15,7 @@ module.exports = (function () {
                     console.log('Successfully connected to mongodb');
                 }
             ).catch(e => {
+                console.error('디비 연결 에러');
                 console.error(e);
             });
         }

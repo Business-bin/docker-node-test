@@ -19,7 +19,6 @@ app.get('/', (req, res) => {
 });
 
 app.use((req, res, next) => {
-    console.log(res.status.toString());
     res.status(404).send('요청한 페이지를 찾을 수 없습니다');
 });
 
