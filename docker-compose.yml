@@ -86,6 +86,22 @@ services:
     depends_on:
       - mongors3
 
+  nginx:
+    container_name: nginx
+    image: nginx
+    restart: always
+    volumes:
+      - './nginx/templates:/etc/nginx/templates'
+      - './nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf'
+    expose:
+      - "8090"
+    ports:
+      - "4000:4000"
+    networks:
+      - mongo-networks
+    depends_on:
+      - node3
+
 networks:
   mongo-networks:
     driver: bridge
