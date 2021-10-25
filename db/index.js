@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+require('mongoose-double')(mongoose);
 
 const {
     MONGO_URI: mongoURI
@@ -6,11 +7,11 @@ const {
 
 module.exports = (function () {
     mongoose.Promise = global.Promise;
-
+    console.log(process.env.MONGO_URI)
     return {
         connect () {
             mongoose.set('debug', true);
-            return mongoose.connect(mongoURI).then(
+            return mongoose.connect(process.env.MONGO_URI).then(
                 () => {
                     console.log('Successfully connected to mongodb');
                 }

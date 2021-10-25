@@ -49,14 +49,38 @@ services:
     depends_on:
       - mongors2
 
-  node:
-    container_name: docker-node
+  node1:
+    container_name: docker-node1
     #    restart: always
     build:  # 이미지를 사용 할 것이 아니기 때문에 build 사용
       context: .  # docker build를 실행 할 디렉토리  . 으로 했기 떄문에 현재 위치
       dockerfile: ./Dockerfile  # 빌드에 사용 될 Dockerfile
     ports:  # 외부 포트와 컨테이너 포트 연결
-      - "4889:5000"
+      - "4997:5000"
+    networks:
+      - mongo-networks
+    depends_on:
+      - mongors3
+
+  node2:
+    container_name: docker-node2
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "4998:5000"
+    networks:
+      - mongo-networks
+    depends_on:
+      - mongors3
+
+  node3:
+    container_name: docker-node3
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "4999:5000"
     networks:
       - mongo-networks
     depends_on:

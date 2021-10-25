@@ -5,10 +5,10 @@ WORKDIR /app
 # 이미지에 node.js와 npm은 설치돼 있으므로 의존성 설치
 # node기반의 컨테이너 /app디렉토리에 package*.json을 카피
 COPY package.json /app
-RUN npm cache clean --force
 # npm 설치
 RUN npm install
-RUN npm install pm2 -g
+# 캐쉬 삭제
+RUN npm cache clean --force
 # 남아있는 소스코드 복사
 COPY . .
 # 도커 실행시 실행될 명령어(서버 구동)

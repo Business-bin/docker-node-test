@@ -20,9 +20,10 @@ router.post('/signup', async (req, res) => {
         });
 
         const result = await user.save();
-        res.send('회원가입 '+ result);
+        res.send('회원가입 성공 '+ result);
     }catch (e) {
         console.log('회원가입 에러');
+        res.send('회원가입 에러');
         console.log(e);
     }
 });
@@ -38,12 +39,14 @@ router.post('/signin', async(req, res) => {
         if(user.user_pw === enPw){
             const token = jwt.generateToken({});
             res.cookie('access_token', token, {httpOnly:true, maxAge: 1000 * 60 * 60 * 24})
-            res.send('로그인 성공 '+user.user_id);
+            // res.send('로그인 성공 '+user.user_id+'님 환영합니다');
+            res.send(`로그인 성공 ${user.user_id}님 환영합니다`);
         }else{
-            res.send('로그인 실패');
+            res.send('로그인 실패! id, password 확인');
         }
     }catch (e) {
         console.log('로그인 에러');
+        res.send('로그인 에러');
         console.log(e);
     }
 });
