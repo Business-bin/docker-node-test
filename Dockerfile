@@ -7,11 +7,12 @@ WORKDIR /app
 COPY package.json /app
 # npm 설치
 RUN npm install
+RUN npm install -g pm2
 # 캐쉬 삭제
-RUN npm cache clean --force
+#RUN npm cache clean --force
 # 남아있는 소스코드 복사
 COPY . .
 # 도커 실행시 실행될 명령어(서버 구동)
-CMD [ "npm", "run", "dev" ]
+CMD [ "npm", "run", "server" ]
 # 5000포트 오픈
 EXPOSE 5000
