@@ -2,5 +2,4 @@
 
 sleep 10 | echo Sleeping
 
-#mongo mongodb://localhost:27017 /db/configs/replicaSet.js
-mongo mongodb://localhost:27017 /replicaSet.js
+mongo mongodb://localhost:27017 /db/configs/replicaSet.js

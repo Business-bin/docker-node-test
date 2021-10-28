@@ -20,7 +20,7 @@ services:
     build:
       context: .
       dockerfile: ./docker-mongo/Dockerfile
-#    restart: always
+    restart: always
     ports:
       - "10001:27017"
     expose:
@@ -34,7 +34,7 @@ services:
   mongors2:
     container_name: mongors2
     image: "mongo"
-#    restart: always
+    restart: always
     ports:
       - "10002:27017"
     expose:
@@ -50,7 +50,7 @@ services:
   mongors3:
     container_name: mongors3
     image: "mongo"
-#    restart: always
+    restart: always
     ports:
       - "10003:27017"
     expose:
@@ -65,7 +65,7 @@ services:
 
   node1:
     container_name: docker-node1
-    #    restart: always
+    restart: always
     build:  # 이미지를 사용 할 것이 아니기 때문에 build 사용
       context: .  # docker build를 실행 할 디렉토리  . 으로 했기 떄문에 현재 위치
       dockerfile: ./Dockerfile  # 빌드에 사용 될 Dockerfile
@@ -78,6 +78,7 @@ services:
 
   node2:
     container_name: docker-node2
+    restart: always
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -90,6 +91,7 @@ services:
 
   node3:
     container_name: docker-node3
+    restart: always
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -103,7 +105,7 @@ services:
   nginx:
     container_name: nginx
     image: nginx
-#    restart: always
+    restart: always
     volumes:
       - './nginx/templates:/etc/nginx/templates'
       - './nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf'
