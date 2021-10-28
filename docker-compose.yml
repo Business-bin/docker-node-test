@@ -13,14 +13,14 @@ services:
       - "8080"
     volumes:
       - '/jenkins:/var/jenkins_home'
-      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/var/run/docker.sock:/var/run/docker.sock -u root jenkins'
 
   mongors1:
     container_name: mongors1
     build:
       context: .
       dockerfile: ./docker-mongo/Dockerfile
-    restart: always
+#    restart: always
     ports:
       - "10001:27017"
     expose:
@@ -34,7 +34,7 @@ services:
   mongors2:
     container_name: mongors2
     image: "mongo"
-    restart: always
+#    restart: always
     ports:
       - "10002:27017"
     expose:
@@ -50,7 +50,7 @@ services:
   mongors3:
     container_name: mongors3
     image: "mongo"
-    restart: always
+#    restart: always
     ports:
       - "10003:27017"
     expose:
@@ -103,7 +103,7 @@ services:
   nginx:
     container_name: nginx
     image: nginx
-    restart: always
+#    restart: always
     volumes:
       - './nginx/templates:/etc/nginx/templates'
       - './nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf'
