@@ -13,6 +13,6 @@ RUN npm install -g pm2
 # 남아있는 소스코드 복사
 COPY . .
 # 도커 실행시 실행될 명령어(서버 구동)
-CMD [ "npm", "run", "server" ]
+CMD [ "npm", "run", "dev" ]
 # 5000포트 오픈
 EXPOSE 5000
