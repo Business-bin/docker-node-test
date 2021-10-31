@@ -4,7 +4,9 @@ FROM jenkins/jenkins:lts
 USER root
 
 # docker 설치
-RUN curl -s https://get.docker.com/ | sh
+#RUN curl -s https://get.docker.com/ | sh
+RUN curl -fsSL https://get.docker.com -o get-docker.sh
+RUN sh get-docker.sh
 # 젠킨스 컨테이너에 도커 설치를 위한 shell script 작성
 #COPY /docker-jenkins/docker_install.sh /docker_install.sh
 ## 실행권한
