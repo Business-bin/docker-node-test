@@ -79,9 +79,10 @@ services:
   node2:
     container_name: docker-node2
     restart: always
-    build:
-      context: .
-      dockerfile: ./Dockerfile
+    image: "docker-node-test_node1"
+#    build:
+#      context: .
+#      dockerfile: ./Dockerfile
     ports:
       - "4998:5000"
     networks:
@@ -92,9 +93,10 @@ services:
   node3:
     container_name: docker-node3
     restart: always
-    build:
-      context: .
-      dockerfile: ./Dockerfile
+    image: "docker-node-test_node1"
+#    build:
+#      context: .
+#      dockerfile: ./Dockerfile
     ports:
       - "4999:5000"
     networks:
