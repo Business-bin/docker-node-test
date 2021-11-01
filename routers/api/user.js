@@ -40,7 +40,7 @@ router.post('/signin', async(req, res) => {
             console.log(req.rawHeaders)
             const token = jwt.generateToken({});
             res.cookie('access_token', token, {httpOnly:true, maxAge: 1000 * 60 * 60 * 24})
-            res.send(`로그인 성공 ${user.user_id}님 환영합니다!! *^^*
+            res.send(`로그인 성공 ${user.user_id}님 환영합니다!! *^^* *^^*
             address : ${req.rawHeaders[11]}`);
 
         }else{
