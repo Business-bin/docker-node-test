@@ -3,10 +3,6 @@ echo ========================== nodejs deploy shell script start ===============
 
 docker build --pull=true -t docker-node-test_node1 .
 
-docker-node=`docker ps | grep docker-node`
-
-echo ======== docker-node ========
-
 echo docker-node1 rm!!!!!!!!!!!!!!!!!!!!!
 docker rm -f docker-node1
 echo docker-node1 run!!!!!!!!!!!!!!!!!!!!!
