@@ -1,7 +1,7 @@
 #!/bin/bash
 echo ========================== nodejs deploy shell script start ==========================
 
-docker build --pull=true -t docker-node-test_node1 .
+docker build -t docker-node-test_node1 .
 
 echo docker-node1 rm!!!!!!!!!!!!!!!!!!!!!
 docker rm -f docker-node1
