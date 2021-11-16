@@ -40,7 +40,11 @@ router.post('/signin', async(req, res) => {
             console.log(req.rawHeaders)
             const token = jwt.generateToken({});
             res.cookie('access_token', token, {httpOnly:true, maxAge: 1000 * 60 * 60 * 24})
+<<<<<<< HEAD
+            res.send(`로그인 성공 ${user.user_id}님 환영합니다!! 젠킨스 자동빌드
+=======
             res.send(`로그인 성공 ${user.user_id}님 환영합니다!! //(^3^)//
+>>>>>>> ebe8ab5a2f36e3a2f2b839c6ce77f021b1c8bbdd
             address : ${req.rawHeaders[11]}`);
 
         }else{
